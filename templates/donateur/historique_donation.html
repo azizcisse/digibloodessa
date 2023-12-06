@@ -1,0 +1,56 @@
+{% extends 'donateur/donateurbase.html' %}
+{% block content %}
+{% load widget_tweaks %}
+{% load static %}
+<head>
+    <style>
+        .label {
+     color: white;
+     padding: 8px;
+    }
+
+   .success {background-color: #4CAF50;} /* Vert */
+   .info {background-color: #2196F3;} /* Bleue */
+   .warning {background-color: #ff9800;} /* Orange */
+   .danger {background-color: #f44336;} /* Rouge */
+   .other {background-color: #e7e7e7; color: black;} /* Gris Noir */
+    </style>
+   </head>
+<br><br>
+<div class="container">
+    <H4 class="text-center alert alert-info">Historiques des Donations</H4><br>
+    <table class="table table-light table-hover table-bordered table-striped">
+        <thead class="bg-info">
+            <tr>
+                <th scope="col">Age Donateur</th>
+                <th scope="col">Maladie (Au Cas Echéant)</th>
+                <th scope="col">Groupe Sanguin</th>
+                <th scope="col">Unité</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Fiche de Demande</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in donations %}
+            <tr>
+                <td>{{t.age}}</td>
+                <td> {{t.maladie}}</td>               
+                <td>{{t.groupesanguin}}</td>
+                <td>{{t.unite}}</td>
+                <td>{{t.date}}</td>
+                {% if t.status == 'Approuve' %}
+                <td><span class="label success"> Approuvé</span></td>                
+                {% elif t.status == 'Rejete' %}
+                <td><span class="label warning">Rejeté</span></td>
+                {% else %}
+                <td><span style="color: white;margin-left: 0px;" class="label info">En-Attente</span></td>
+                {% endif %}  
+                <td><a href="{% url 'pdf-don' t.pk  %}" class="btn btn-secondary btn-sm"><i class="fa fa-file-pdf" style="color: red;"></i></a></td>  
+            </tr>
+            {% endfor %}
+        </tbody>    
+    </table>
+</div>
+
+{% endblock content %}

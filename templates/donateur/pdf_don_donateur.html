@@ -1,0 +1,41 @@
+{% load static %}
+
+{% block content %}
+<style>
+    h1 {
+        color: red;
+        text-align: center;
+        font-size: 40px;
+    }
+    h2 {
+        color: blue;
+        text-align: center;
+        font-size: 25px;
+    }
+    h3 {
+        color: black;
+        font-size: 25px;
+    }
+</style>
+<div class="container">
+    <h1><i class='fab fa-gratipay' style='font-size:48px;color:red'></i>&nbsp;DIGI-BLOOD</h1>
+    <br>
+    <h3 class="text-center">La Fiche du donateur :</h3>
+    <br>
+    <h2>La maladie du donateur :  <span style="color: cornflowerblue;">{{don_donateur.maladie}} </span></h2>
+    <br>
+    <h2>L'age du donateur : <span style="color: cornflowerblue;">{{don_donateur.age}} Ans</span></h2>
+    <br>
+    <h2>Le Groupe Sanguin : <span style="color: cornflowerblue;">{{don_donateur.groupesanguin}}</span></h2>
+    <br>
+    <h2>Le nombre d'Unité de sang besoin en (ML) : <span style="color: orangered;"></span>{{don_donateur.unite}} ML</span></h2>
+    <br>
+    <h2>La date de la demande : <span style="color: cornflowerblue;">{{don_donateur.date}}</span></h2>
+    <br>
+    <br>
+    <h2>Le Status de la demande : <span style="color: green;">{{don_donateur.status}}</span></h2>
+
+</div>
+
+{% endblock content %}
+    

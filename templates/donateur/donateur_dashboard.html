@@ -1,0 +1,68 @@
+{% extends 'donateur/donateurbase.html' %}
+{% load static %}
+{% block content %}
+<br><br>
+<div class="container">
+  <h4 class="text-center alert alert-info mb-5">Salam, <strong class="text-danger"> {{request.user.first_name}} {{request.user.last_name}}</strong>, Voici les informations de votre compte : </h4>
+
+    <div class="row">
+
+      <div class="col-sm-3">
+        <div class="card bg-light">
+          <div class="card-body">
+              <div class="blood">
+                <i class="fas fa-sync-alt xyz"></i>
+              </div><br>
+              <div>
+                Demande Effectuée <br>
+                  {{demadeEffectuee}}
+              </div>                            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="card bg-light">
+            <div class="card-body">
+                <div class="blood">
+                  <i class="fas fa-sync xyz"></i>
+                </div><br>
+                <div>
+                    Demande En Attente <br>
+                    {{demandeEnAttente}}
+                </div>                            
+            </div>
+          </div>
+      </div>
+
+      <div class="col-sm-3">
+          <div class="card bg-light">
+              <div class="card-body">
+                  <div class="blood">
+                    <i class="fas fa-check-circle xyz"></i>
+                  </div><br>
+                  <div>
+                        Demande Approuvée<br>
+                      {{demandeApprouvee}}
+                  </div>                            
+              </div>
+            </div>
+      </div>
+      
+      <div class="col-sm-3">
+          <div class="card bg-light">
+              <div class="card-body">
+                  <div class="blood">
+                    <i class="fas fa-times-circle xyz"></i>
+                  </div><br>
+                  <div>
+                        Demande Rejetée <br>
+                      {{demandeRejetee}}
+                  </div>                            
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

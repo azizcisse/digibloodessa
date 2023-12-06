@@ -1,0 +1,42 @@
+{% load static %}
+
+{% block content %}
+<style>
+    h1 {
+        color: red;
+        text-align: center;
+        font-size: 40px;
+    }
+    h2 {
+        color: blue;
+        text-align: center;
+        font-size: 25px;
+    }
+    h3 {
+        color: black;
+        font-size: 25px;
+    }
+</style>
+<div class="container">
+    <h1><i class='fab fa-gratipay' style='font-size:48px;color:red'></i>&nbsp;DIGI-BLOOD</h1>
+    <h3>Les informations issues de la demande de sang du patient : </h3>
+    <br>
+    <h2>Le Nom Complet du Patient : <span style="color: cornflowerblue;"> {{demande_patient.nomPatient}}</span></h2>
+    <br>
+    <h2>L'Age du Patient : <span style="color: cornflowerblue;"> {{demande_patient.agePatient}}</span></h2>
+    <br>
+    <h2>Raison de la demande : <span style="color: cornflowerblue;"> {{demande_patient.raison}}</span></h2>
+    <br>
+    <h2>Le Groupe Sanguin : <span style="color: cornflowerblue;">{{demande_patient.groupesanguin}}</span></h2>
+    <br>
+    <h2>Le nombre d'Unité de sang besoin en (ML) :<span style="color: orangered;"> {{demande_patient.unite}} ML</span></h2>
+    <br>
+    <h2>La date de la demande : <span style="color: cornflowerblue;"> {{demande_patient.date}}</span></h2>
+    <br>
+    <br>
+    <h2>Le Status de la demande : <span style="color: green;"> {{demande_patient.status}}</span></h2>
+</div>
+
+{% endblock content %}
+    
+

@@ -1,0 +1,40 @@
+{% extends 'donSang/adminbase.html' %}
+{% block content %}
+{% load widget_tweaks %}
+{% load static %}
+<br><br>
+<div class="container">
+    <H4 class="text-center alert alert-info">DETAILS PATIENTS</H4><br>
+    <table class="table table-light table-hover table-bordered table-striped">
+        <thead class="bg-info">
+            <tr>
+                <th scope="col">Nom Patient</th>
+                <th scope="col">Profil</th>
+                <th scope="col">Groupe Sanguin</th>
+                <th scope="col">Age Patient</th>
+                <th scope="col">Maladie</th>
+                <th scope="col">Téléphone</th>
+                <th class="text-right">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in patients %}
+            <tr>
+                <td> {{t.get_name}}</td>
+                <td> <img src="{% static t.profil.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
+                <td>{{t.groupesanguin}}</td>
+                <td>{{t.age}}</td>
+                <td>{{t.maladie}}</td>
+                <td>{{t.telephone}}</td>
+                
+                <td class="text-right">
+                    <button class="btn btn-primary badge-pill" style="width: 50px;"><a  style="text-decoration: none;color: white;" href="{% url 'modifier-patient' t.id  %}"><i class="fa fa-edit xyz"></i></a> </button>
+                    <button class="btn btn-danger badge-pill" style="width: 50px;"><a  style="text-decoration: none;color: white;" href="{% url 'supprimer-patient' t.id  %}"><i class="fa fa-trash xyz"></i></a> </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>    
+    </table>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,75 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+      
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome/css/all.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" media="all">
+    <style>
+
+    </style>
+  </head>
+  <body>
+    {% include "donSang/navbar.html" %}
+
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div class="wrapper wrapper--w790">
+            <br><br><br>
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Interface de Connexion Donateur</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="name">Nom d'Utilisateur</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    {% render_field form.username class="input--style-5"%}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Mot de Passe</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    {% render_field form.password class="input--style-5" %}
+                                </div>
+                            </div>
+                        </div>
+
+
+                        
+
+                        <div>
+                            <button class="btn btn--radius-2 btn-success" type="submit">Se Connecter</button>
+                            <button class="btn btn--radius-2 btn-danger" type="reset"><a href="/">Annuler</a></button>
+                        </div>
+                    </form>
+                    <br>
+                    <p style="text-align: right;">Vous n'Avez pas de Compte ? <a style="text-decoration: none;" href="/donateur/donateursignup">S'Inscrire</a></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% include "donSang/footer.html" %}
+
+
+
+
+
+
+
+
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+  </body>
+</html>

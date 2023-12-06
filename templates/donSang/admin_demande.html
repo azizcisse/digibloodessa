@@ -1,0 +1,54 @@
+{% extends 'donSang/adminbase.html' %}
+{% block content %}
+{% load widget_tweaks %}
+{% load static %}
+<br><br>
+<div class="container">
+    {% if requests %}
+    <H4 class="text-center alert alert-info">Liste des Demandes de Sang</H4><br>
+    {% if message %}
+   <h5 class="text-center" style="color: red;"> {{message}}</h5><br>
+{% else %}
+
+{% endif %}
+    <table class="table table-light table-hover table-bordered table-striped">
+        <thead class="bg-info">
+            <tr>
+                <th scope="col">Nom Patient</th>
+                <th scope="col">Age Patient</th>                
+                <th scope="col">Raison</th>
+                <th scope="col">Groupe Sanguin</th>
+                <th scope="col">Unité</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+                <th class="text-right">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in requests %}
+            <tr>
+                <td> {{t.nomPatient}}</td>
+                <td>{{t.agePatient}}</td>
+                <td>{{t.raison}}</td>
+                <td>{{t.groupesanguin}}</td>
+                <td>{{t.unite}}</td>
+                <td>{{t.date}}</td>
+                <td>{{t.status}}</td>                
+                <td class="text-right">   
+                    <button class="btn btn-primary badge-pill" style="width: 120px;"><a  style="text-decoration: none;color: white;" href="{% url 'modifier-status-approuve' t.id  %}">APPROUVEE</a> </button>
+                    <button class="btn btn-danger badge-pill" style="width: 90px;"><a  style="text-decoration: none;color: white;" href="{% url 'modifier-status-rejete' t.id  %}">REJETEE</a> </button>
+                    
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    
+    </table>
+{% else %}
+<h5>Aucune Demande de Sang Par le Patient / Donateur !</h5>
+{% endif %}
+
+</div>
+
+{% endblock content %}
